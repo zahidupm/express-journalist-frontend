@@ -81,7 +81,7 @@ const Header = () => {
                 </NavLink>
               )}
             </li>
-            <li>{user?.displayName}</li>
+            {/* <li>{user?.displayName}</li> */}
             <li>
               {user?.uid ? <div className="user">
               <img aria-label={user?.displayName}

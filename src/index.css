@@ -10,6 +10,9 @@
 .error-message::before {
   content: "❌ ";
 }
+.user-img {
+  width: 40px;
+}
 
 
 
