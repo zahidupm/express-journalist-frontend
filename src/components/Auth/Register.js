@@ -136,6 +136,7 @@ const Register = () => {
                             <button type="submit" className="bg-orange-500 pmt_sign-up-btn pm-btn pm-btn-primary sign-up-btn g-recaptcha" id="sign-up-btn">
                             Sign Up
                             </button>
+                            {errors.general && <p className='t-red error-message'>{errors.general}</p>}
                         </div>
                     </form>
 

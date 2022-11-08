@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import { signOut } from 'firebase/auth';
+import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { auth } from '../../configs/firebase.config';
+import { AuthContext } from '../../contexts/auth.context';
 
 const Header = () => {
-    const {user} = {};
+    const {user} = useContext(AuthContext);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -66,15 +69,15 @@ const Header = () => {
             </li>
             <li>
               {user?.uid ? (
-                <button className='bg-orange-300 hover:bg-orange-400 duration-200 px-6 py-2 text-white fw-semibold' >Logout</button> 
+                <button className='bg-orange-300 hover:bg-orange-400 duration-200 px-6 py-2 text-white fw-semibold' onClick={() => signOut(auth)} >Sign Out</button> 
               ) : (
-                <NavLink       /* onClick={() => signOut(auth)} */
+                <NavLink       /*  */
                 to='/login'
-                aria-label='Login'
-                title='Login'
+                aria-label='Sign In'
+                title='Sign In'
                 className={({isActive}) => isActive ? 'font-medium tracking-wide transition-colors duration-200 bg-purple-500 py-2 px-6 text-white hover:text-deep-purple-accent-400' : 'font-medium tracking-wide transition-colors duration-200 bg-orange-300 hover:bg-orange-400 text-white px-6 py-2 hover:text-deep-purple-accent-400'}
                 >
-                  Login
+                  Sign In
                 </NavLink>
               )}
             </li>
@@ -108,7 +111,7 @@ const Header = () => {
               </svg>
             </button>
             {isMenuOpen && (
-              <div className='absolute top-0 left-0 w-full learning-menu'>
+              <div className='absolute top-0 left-0 w-full learning-menu z-9'>
                 <div className='p-5 bg-white border rounded shadow-sm'>
                   <div className='flex items-center justify-between mb-4'>
                     <div>
@@ -186,15 +189,15 @@ const Header = () => {
                       </li>
                       <li>
                         {user?.uid ? (
-                          <button className='bg-orange-300 hover:bg-orange-400 duration-200 px-6 py-2 text-white fw-semibold' >Logout</button>
+                          <button className='bg-orange-300 hover:bg-orange-400 duration-200 px-6 py-2 text-white fw-semibold' onClick={() => signOut(auth)} >Sign Out</button>
                         ) : (
                           <NavLink
-                          to='/login'       /* onClick={() => signOut(auth)} */
-                          aria-label='Login'
-                          title='Login'
+                          to='/login'       /*  */
+                          aria-label='Sign In'
+                          title='Sign In'
                           className={({isActive}) => isActive ? 'font-medium tracking-wide transition-colors duration-200 bg-purple-500 py-2 px-6 text-white hover:text-deep-purple-accent-400' : 'font-medium tracking-wide transition-colors duration-200 bg-orange-300 hover:bg-orange-400 text-white px-6 py-2 hover:text-deep-purple-accent-400'}
                           >
-                            Login
+                            Sign In
                           </NavLink>
                         )}
                       </li>

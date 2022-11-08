@@ -1,11 +1,79 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
+import { AuthContext } from '../../contexts/auth.context';
 import './Auth.css';
 
 const Login = () => {
+    const {signIn} = useContext(AuthContext)
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const [userInfo, setUserInfo]= useState({
+        email: "",
+        password: ""
+      })
+    
+      const [errors, setErrors] = useState({
+        email: "",
+        password: "",
+        general: ""
+      })
+    
+      const handleEmail = (e) => {
+        const email = e.target.value;
+        console.log(email);
+        if(!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+          setErrors({...errors, email: "Please provide a valid email"});
+          setUserInfo({...userInfo, email: ''});
+        } else {
+          setErrors({...errors, email: ''});
+          setUserInfo({...userInfo, email: e.target.value});
+        }
+      }
+    
+      const handlePassword = (e) => {
+        const password = e.target.value;
+        console.log(password);
+    
+        const lengthError = password.length < 6;
+        const noSymbolError = !/[\!\@\#\$\%\^\&\*]{1,}/.test(password);
+        const noCapitalLetterError = !/[A-Z]{1,}/.test(password);
+    
+        if(lengthError) {
+          setErrors({...errors, password: 'Must be at least 6 character'});
+          setUserInfo({...userInfo, password: ''});
+        } else if(noSymbolError) {
+          setErrors({...errors, password: 'At least 1 Especial character'});
+          setUserInfo({...userInfo, password: ''})
+        } else if(noCapitalLetterError) {
+          setErrors({...errors, password: 'At least 1 Uppercase character'});
+          setUserInfo({...userInfo, password: ''});
+        } else {
+          setErrors({...errors, password: ''});
+          setUserInfo({...userInfo, password: e.target.value});
+        }
+      }
+    
+      const handleSubmit = (e) => {
+        e.preventDefault();
+    
+        signIn(userInfo.email, userInfo.password)
+        .then(result => {
+          const user = result.user;
+          console.log(user);
+          navigate(location?.state?.from?.pathname || '/');
+          swal({ title: "Sign In successfully!",icon: "success", });
+        })
+        .catch(error => {
+          console.error(error)
+          setErrors({...errors, general: error.message});
+        });    
+    }
+
     return (
         <div>
-            <div className="pm-container-fluid bg-[#f2f2f2]">
+            <div className="pm-container-fluid bg-[#f22f2]">
 
                 <div className="pm-main-sign-up lg:pl-[392px]">
                     <div className="left-section">
@@ -20,16 +88,18 @@ const Login = () => {
                         </div>
                     </div>
 
-                    <form id="sign-up-form">
+                    <form onSubmit={handleSubmit} id="sign-up-form">
                         <div className="pm-form-group">
                             <label htmlFor="email" className="pm-form-label">Email</label>
-                            <input type="email" className="pm-form-control focus:border-orange-400" id="email" name="email" autoFocus="" autoComplete="off" autoCapitalize="none" spellCheck="true" />
+                            <input onChange={handleEmail} type="email" className="pm-form-control focus:border-orange-400" id="email" name="email" autoFocus="" autoComplete="off" autoCapitalize="none" spellCheck="true" />
+                            {errors.email && <p className="t-red error-message">{errors.email}</p>}
                         </div>
                         <div className="pm-form-group">
                             <label htmlFor="password" className="pm-form-label">Password
                             <span id="show-password" className="show-password">SHOW</span>
                             </label>
-                            <input type="password" className="pm-form-control focus:border-orange-400" id="password" name="password" />
+                            <input onChange={handlePassword} type="password" className="pm-form-control focus:border-orange-400" id="password" name="password" />
+                            {errors.password && <p className='t-red error-message'>{errors.password}</p>}
                         </div>
 
                         <div className='space-y-1'>
@@ -48,6 +118,7 @@ const Login = () => {
                             <button type="submit" className="bg-orange-500 pmt_sign-up-btn pm-btn pm-btn-primary sign-up-btn g-recaptcha" id="sign-up-btn">
                             Sign In
                             </button>
+                            {errors.general && <p className='t-red error-message'>{errors.general}</p>}
                         </div>
                     </form>
 
