@@ -1,16 +1,95 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 import { AuthContext } from '../../contexts/auth.context';
 import './Auth.css';
 
+
 const Register = () => {
-    const {createUser} = useContext(AuthContext);
+    const {createUser, updateUserProfile} = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const [userInfo, setUserInfo] = useState({
         email: "",
         name: "",
         password: ""
+    });
+
+    const [errors, setErrors] = useState({
+        email: "",
+        password: "",
+        general: ""
     })
+
+    const handleEmail = (e) => {
+        const email = e.target.value;
+        console.log(email);
+        if(!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+          setErrors({...errors, email: "Please provide a valid email"});
+          setUserInfo({...userInfo, email: ''});
+        } else {
+          setErrors({...errors, email: ''});
+          setUserInfo({...userInfo, email: e.target.value});
+        }
+    }
+
+    const handleName = (e) => {
+        const name = e.target.value;
+        console.log(name);
+        setUserInfo({...userInfo, name: e.target.value});
+    }
+
+    const handlePassword = (e) => {
+        const password = e.target.value;
+        console.log(password);
+    
+        const lengthError = password.length < 6;
+        const noSymbolError = !/[\!\@\#\$\%\^\&\*]{1,}/.test(password);
+        const noCapitalLetterError = !/[A-Z]{1,}/.test(password);
+    
+        if(lengthError) {
+          setErrors({...errors, password: 'Must be at least 6 character'});
+          setUserInfo({...userInfo, password: ''});
+        } else if(noSymbolError) {
+          setErrors({...errors, password: 'At least 1 Especial character'});
+          setUserInfo({...userInfo, password: ''})
+        } else if(noCapitalLetterError) {
+          setErrors({...errors, password: 'At least 1 Uppercase character'});
+          setUserInfo({...userInfo, password: ''});
+        } else {
+          setErrors({...errors, password: ''});
+          setUserInfo({...userInfo, password: e.target.value});
+        }
+      }
+
+      const handleUpdateUserProfile = (name) => {
+        const profile = {
+          displayName: name,
+        }
+        updateUserProfile(profile)
+        .then(() => {})
+        .catch(error => console.error(error))
+      }  
+
+      // handle form
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        createUser(userInfo.email, userInfo.password)
+        .then(result => {
+          const user = result.user;
+          console.log(user);
+          swal({ title: "Registered successfully!",icon: "success", });
+          navigate('/login');
+          handleUpdateUserProfile(userInfo.name);
+        })
+        .catch(error => {
+          console.error(error);
+          setErrors({...errors, general:error.message})
+        })
+    }
+
+
 
     return (
         <div>
@@ -29,20 +108,22 @@ const Register = () => {
                         </div>
                     </div>
 
-                    <form id="sign-up-form">
+                    <form onSubmit={handleSubmit} id="sign-up-form">
                         <div className="pm-form-group">
                             <label htmlFor="email" className="pm-form-label">Email</label>
-                            <input type="email" className="pm-form-control focus:border-orange-400" id="email" name="email" autoFocus="" autoComplete="off" autoCapitalize="none" spellCheck="true" />
+                            <input onChange={handleEmail} type="email" className="pm-form-control focus:border-orange-400" id="email" name="email" autoFocus="" autoComplete="off" autoCapitalize="none" spellCheck="true" required />
+                            {errors.email && <p className="t-red error-message">{errors.email}</p>}
                         </div>
                         <div className="pm-form-group">
                             <label htmlFor="name" className="pm-form-label">Name</label>
-                            <input type="text" className="pm-form-control focus:border-orange-400" id="name" name="name" autoComplete="off" autoCapitalize="none" spellCheck="true" />
+                            <input onChange={handleName} type="text" className="pm-form-control focus:border-orange-400" id="name" name="name" autoComplete="off" autoCapitalize="none" spellCheck="true" required />
                         </div>
                         <div className="pm-form-group">
                             <label htmlFor="password" className="pm-form-label">Password
                             <span id="show-password" className="show-password">SHOW</span>
                             </label>
-                            <input type="password" className="pm-form-control focus:border-orange-400" id="password" name="password" />
+                            <input onChange={handlePassword} type="password" className="pm-form-control focus:border-orange-400" id="password" name="password" required />
+                            {errors.password && <p className='t-red error-message'>{errors.password}</p>}
                         </div>
 
                         <p id="terms-and-privacy">By creating an account, I agree to the
