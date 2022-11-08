@@ -1,0 +1,51 @@
+[
+  {
+    "service_id": "01",
+    "title": "Investigative journalism",
+    "sub_title": "The major media conglomerates have found ways to retain their audience without the risks of offending advertisers inherent in investigative journalism",
+    "img": "https://cdn.pixabay.com/photo/2016/11/21/00/27/philatelist-1844081_960_720.jpg",
+    "price": "20.00",
+    "ratings": "4",
+    "description": "Investigative journalism is a form of journalism in which reporters deeply investigate a single topic of interest, such as serious crimes, political corruption, or corporate wrongdoing. An investigative journalist may spend months or years researching and preparing a report. Practitioners sometimes use the terms 'watchdog reporting'or 'accountability reporting.' Most investigative journalism has traditionally been conducted by newspapers, wire services, and freelance journalists. With the decline in income through advertising, many traditional news services have struggled to fund investigative journalism, due to it being very time-consuming and expensive. Journalistic investigations are increasingly carried out by news organizations working together, even internationally (as in the case of the Panama Papers and Paradise Papers), or by organizations such as ProPublica, which have not operated previously as news publishers and which rely on the support of the public and benefactors to fund their work."
+  },
+  {
+    "service_id": "02",
+    "title": "Photojournalism",
+    "sub_title": "Photos were used to enhance the text rather than to act as a medium of information in its own right.",
+    "img": "https://cdn.pixabay.com/photo/2021/10/13/15/39/kids-6706964_960_720.jpg",
+    "price": "22.00",
+    "description": "Photojournalism is journalism that uses images to tell a news story. It usually only refers to still images, but can also refer to video used in broadcast journalism. Photojournalism is distinguished from other close branches of photography (such as documentary photography, social documentary photography, war photography, street photography and celebrity photography) by having a rigid ethical framework which demands an honest but impartial approach that tells a story in strictly journalistic terms. Photojournalists contribute to the news media, and help communities connect with one other. They must be well-informed and knowledgeable, and are able to deliver news in a creative manner that is both informative and entertaining.Similar to a writer, a photojournalist is a reporter, but they must often make decisions instantly and carry photographic equipment, often while exposed to significant obstacles, among them immediate physical danger, bad weather, large crowds, and limited physical access to their subjects."
+  },
+  {
+    "service_id": "03",
+    "title": "Analytic journalism",
+    "sub_title": "Analytic journalism testing hypotheses and assumptions scientifically against evidence",
+    "img": "https://cdn.pixabay.com/photo/2020/04/25/12/14/circle-5090539_960_720.jpg",
+    "price": "220.00",
+    "description": "Analytic journalism is a field of journalism that seeks to make sense of complex reality in order to create public understanding. It combines aspects of investigative journalism and explanatory reporting. Analytic journalism can be seen as a response to professionalized communication from powerful agents, information overload, and growing complexity in a globalised world. It aims to create evidence-based interpretations of reality, often confronting dominant ways of understanding a specific phenomenon.It is distinctive in terms of research practices and journalistic product.[1] At times, it uses methods from social science research.[2] The journalist gains expertise on a particular topic, to identify a phenomenon that is not readily obvious. At its best, investigative journalism is deeply analytic, but its intent is primarily to expose. Analytic journalism's primary aim is to explain. It contextualizes its subject by describing background, historical details, and statistical data. The goal is a comprehensive explanation that shapes audience perception of the phenomenon. Analytic journalism aspires to collect disparate data and make connections that are not immediately apparent."
+  },
+  {
+    "service_id": "04",
+    "title": "Innovation journalism",
+    "sub_title": "Innovation Journalism acts as a link between people interested in innovations",
+    "img": "https://cdn.pixabay.com/photo/2019/03/18/13/40/eye-4063134_960_720.jpg",
+    "price": "150.00",
+    "description": "Innovation Journalism is journalism covering innovation. It covers innovation processes and innovation (eco)systems.In 2008, Innovation Journalism was listed by the World Economic Forum as one of seven key dimensions for discussing the redefinition of the media and its roles in a global, interconnected society.[1] Innovation Journalism was included in the Sage Encyclopedia of Journalism in 2009.[2]The concept of Innovation Journalism was first suggested by David Nordfors in 2003. The core 'innovation journalism' concept is to consider two specific facets of journalism: innovations in journalism, e.g. the use of the Internet or other digital media in addition to traditional print, and journalistic treatment of innovation in various disciplines such that the 'vertical' consideration of specific innovations, for example their technological, business, sociological or political influences, could be embraced on a 'horizontal' basis that would more completely explain to audiences the relevance of such advances. Almost all earlier journalism has focused on one or other of the 'vertical' areas of journalism, commonly found in the popular media. Innovation journalism thus makes much broader demands on journalists, in that their narrow specialties cannot adequately capture the full spectrum of influence brought about by innovations themselves. This, in turn, calls for new approaches to journalism education."
+  },
+  {
+    "service_id": "05",
+    "title": "Interpretive journalism",
+    "sub_title": "It is reporting news depth and with care, news refreshed with background materials to make it comprehensive and meaningful",
+    "img": "https://images.unsplash.com/photo-1505635552518-3448ff116af3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=465&q=80",
+    "price": "30.00",
+    "description": "Interpretive (or Interpretative) journalism or interpretive reporting requires a journalist to go beyond the basic facts related to an event and provide more in-depth news coverage. The lack of precise borders accompanied with diverse theoretical approaches related to what interpretative journalism is in the modern world results in the practice of interpretative journalism overlapping with various other genres of journalism, and furthermore operationalization of interpretative journalism becomes largely blurred. [1] Interpretive journalists must have atypical awareness with and comprehension of a subject with their work involving looking for systems, rationale and influences that explain what they are reporting.The impact of interpretive journalism is when the reporting results in trend-setting articles, powerful think-pieces and further straying into the field of investigative reporting which has become the hallmark of good print journalism. But in recent times with the trend of breaking news and in finding ways to get viewers faster, journalists as well as readers have given up or just don't find time for traditional long-form interpretive reporting."
+  },
+  {
+    "service_id": "06",
+    "title": "Human-interest story Journalism",
+    "sub_title": "Human-interest stories are sometimes criticized as soft news, or manipulative",
+    "img": "https://images.unsplash.com/photo-1598259748527-7bc30d303043?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8aHVtYW4lMjBpbnRlcmVzdCUyMHN0b3J5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    "price": "50.00",
+    "description": "In journalism, a human-interest story is a feature story that discusses people or pets in an emotional way.[1] It presents people and their problems, concerns, or achievements in a way that brings about interest, sympathy or motivation in the reader or viewer. Human-interest stories are a type of soft news.[2]Human-interest stories may be 'the story behind the story' about an event, organization, or otherwise faceless historical happening, such as about the life of an individual soldier during wartime, an interview with a survivor of a natural disaster, a random act of kindness, or profile of someone known for a career achievement. A study published in the American Behavioral Scientist illustrates that human-interest stories are furthermore often used in the news coverage of irregular immigration, although the frequency differs from country to country.[3] Human-interest features are frequently evergreen content, easily recorded well in advance and/or rerun during holidays or slow news days.The popularity of the human-interest format derives from the stories' ability to put the consumer at the heart of a current event or personal story through making its content relatable to the viewer in order to draw their interest.[4] Human-interest stories also have the role of diverting consumers from 'hard news' as they often are used to amuse consumers and leave them with a light-hearted story."
+  }
+]
