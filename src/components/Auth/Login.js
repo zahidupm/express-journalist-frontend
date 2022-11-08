@@ -45,13 +45,13 @@ const Login = () => {
                         </p>
 
                         <div className="pm-form-group">
-                            <button type="submit" className="pmt_sign-up-btn pm-btn pm-btn-primary sign-up-btn g-recaptcha" id="sign-up-btn">
+                            <button type="submit" className="bg-orange-500 pmt_sign-up-btn pm-btn pm-btn-primary sign-up-btn g-recaptcha" id="sign-up-btn">
                             Sign In
                             </button>
                         </div>
                     </form>
 
-                    <div className="pm-awesome-divider-div pt-4">
+                    <div className="pm-awesome-divider-div">
                         <div className="pm-awesome-divider" data-label="or">or</div>
                     </div>
 

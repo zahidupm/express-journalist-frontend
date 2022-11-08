@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/auth.context';
 import './Auth.css';
 
 const Register = () => {
+    const {createUser} = useContext(AuthContext);
+
+    const [userInfo, setUserInfo] = useState({
+        email: "",
+        name: "",
+        password: ""
+    })
+
     return (
         <div>
             <div className="pm-container-fluid bg-[#f2f2f2]">
@@ -43,7 +52,7 @@ const Register = () => {
                         </p>
 
                         <div className="pm-form-group">
-                            <button type="submit" className="pmt_sign-up-btn pm-btn pm-btn-primary sign-up-btn g-recaptcha" id="sign-up-btn">
+                            <button type="submit" className="bg-orange-500 pmt_sign-up-btn pm-btn pm-btn-primary sign-up-btn g-recaptcha" id="sign-up-btn">
                             Sign Up
                             </button>
                         </div>
