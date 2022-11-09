@@ -1,4 +1,5 @@
 import React from 'react';
+import swal from 'sweetalert';
 import '../components/Auth/Auth.css';
 
 const AddService = () => {
@@ -13,6 +14,25 @@ const AddService = () => {
             img: e.target.img.value,
         }
         console.log(service);
+
+        fetch(`http://localhost:5000/services`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(service)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.success) {
+                swal({ title: data.success, icon: "success", });
+            } else {
+                swal({ title: data.error, icon: "error", });
+            }
+        })
+        .catch(err => {
+            swal({ title: err.message, icon: "error", });
+        })
     }
 
     return (
