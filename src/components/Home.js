@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ServiceItem from './ServiceItem';
+import Sports from './Shared/Sports';
 
 const Home = () => {
     const [services, setServices] = useState([]);
@@ -54,18 +55,27 @@ const Home = () => {
                 </Link>
                 </div>
                 <div className="bg-[#F4E6D9] py-16 mx-auto sm:max-w-xl-fluid md:max-w-full-fluid lg:max-w-screen-xl-fluid lg:py-20">
-                <div className="mb-10 px-12 border-t-4 border-t-black divide-y">
-                    {
-                        services.map(service => <ServiceItem 
-                        key={service._id}
-                        service={service}
-                        ></ServiceItem>)
-                    }
-                </div>
+                    <div className="mb-10 px-12 border-t-4 border-t-black divide-y">
+                        {
+                            services.map(service => <ServiceItem 
+                            key={service._id}
+                            service={service}
+                            ></ServiceItem>)
+                        }
+                    </div>
                 <div className="text-center">
+                <Link to={`/services`}>
+                            <button
+                            type='submit'
+                            className='inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-blue-400 hover:bg-blue-700 focus:shadow-outline focus:outline-none'
+                            >
+                            SEE ALL
+                            </button>
+                        </Link>
                 </div>
+                {/* ====  services end*/}
+                        <Sports></Sports>
                 </div>
-
         </div>
     );
 };

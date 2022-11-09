@@ -1,4 +1,5 @@
 import React from 'react';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link, useLoaderData } from 'react-router-dom';
 
 const ServiceDetails = () => {
@@ -48,11 +49,16 @@ const ServiceDetails = () => {
                     </div> */}
                 </div>
             <div>
-                <img
-                className="object-cover w-full h-56 rounded shadow-lg sm:h-96"
-                src={img}
-                alt=""
-                />
+                <PhotoProvider>
+                    <PhotoView key={_id} src={img}>
+                        <img
+                        className="object-cover w-full h-56 rounded shadow-lg sm:h-96"
+                        src={img}
+                        alt=""
+                        />
+                    </PhotoView>
+                </PhotoProvider>
+                
             </div>
             </div>
             <div className='mt-12'>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link } from 'react-router-dom';
 
 const ServiceItem = ({service}) => {
@@ -43,11 +44,21 @@ const ServiceItem = ({service}) => {
                         </div>
                     </div>
                     <div className=''>
-                    <img
+                        <PhotoProvider>
+                            <PhotoView key={_id} src={img}>
+                            <img
+                            className="object-cover w-full h-22 rounded shadow-lg sm:h-30"
+                            src={img}
+                            alt=""
+                        />
+                            </PhotoView>
+                        </PhotoProvider>
+                        
+                    {/* <img
                         className="object-cover w-full h-22 rounded shadow-lg sm:h-30"
                         src={img}
                         alt=""
-                    />
+                    /> */}
                     </div>
                 </div>
                         {/*========*/}
