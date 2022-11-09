@@ -13,7 +13,7 @@ const AddReview = () => {
 
         const review = {
             name: e.target.name.value,
-            email: e.target.email?.value || 'undefined',
+            email: user?.email || 'undefined',
             photoURL: e.target.photoURL.value,
             desc: e.target.desc.value,
             service: _id,
