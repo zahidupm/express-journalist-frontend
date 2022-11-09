@@ -194,6 +194,19 @@ const Header = () => {
                         </NavLink>
                       </li>
                       <li>
+                        {
+                          user?.uid ? 
+                          <NavLink
+                          to='/add_service'
+                          aria-label='Add Services'
+                          title='Add Services'
+                          className={({isActive}) => isActive ? ' dark-active font-medium tracking-wide text-blue-700 transition-colors duration-200 hover:text-deep-purple-accent-400' : 'font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'}
+                        >
+                          Add Services
+                        </NavLink> : ''
+                        }
+                      </li>
+                      <li>
                         <NavLink
                           to='/faq'
                           aria-label='FAQ'
@@ -214,6 +227,19 @@ const Header = () => {
                         </NavLink>
                       </li>
                       <li>
+                        {
+                          user?.uid ? 
+                          <NavLink
+                          to='/my_reviews'
+                          aria-label='My Reviews'
+                          title='My Reviews'
+                          className={({isActive}) => isActive ? ' dark-active font-medium tracking-wide text-blue-700 transition-colors duration-200 hover:text-deep-purple-accent-400' : 'font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'}
+                        >
+                          My Reviews
+                        </NavLink> : ''
+                        }
+                      </li>
+                      <li>
                         {user?.uid ? (
                           <button className='bg-orange-300 hover:bg-orange-400 duration-200 px-6 py-2 text-white fw-semibold' onClick={() => signOut(auth)} >Sign Out</button>
                         ) : (
@@ -227,7 +253,7 @@ const Header = () => {
                           </NavLink>
                         )}
                       </li>
-                      <li>{user?.displayName}</li>
+                      {/* <li>{user?.displayName}</li> */}
                       <li>
                         {user?.uid ? <div className="user">
                         <img aria-label={user?.displayName}

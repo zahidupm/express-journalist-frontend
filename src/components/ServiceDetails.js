@@ -1,10 +1,10 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const ServiceDetails = () => {
     const services = useLoaderData();
     console.log(services);
-    const {title} = services;
+    const {title, sub_title, img, description, price, _id} = services;
     return (
         <div>
             <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
@@ -14,16 +14,17 @@ const ServiceDetails = () => {
                         <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
                            {title} 
                         </h2>
-                        <p className="text-base text-gray-700 md:text-lg">
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                            quae. explicabo.
+                        <p className="text-xl mt-4 font-semibold text-gray-700 md:text-lg">
+                            {sub_title}
+                        </p>
+                        <p className="text-base mt-12 text-gray-700 md:text-lg">
+                           <span className='font-bold text-lg'>{title}:</span> {description}
+                        </p>
+                        <p className="text-base font-semibold mt-12 text-blue-700 md:text-lg">
+                           <span className='text-lg text-blue-400'>Price:</span> {price}
                         </p>
                     </div>
-                        <p className="mb-4 text-sm font-bold tracking-widest uppercase">
-                             Features
-                        </p>
-                    <div className="grid space-y-3 sm:gap-2 sm:grid-cols-2 sm:space-y-0">
+                    {/* <div className="grid space-y-3 sm:gap-2 sm:grid-cols-2 sm:space-y-0">
                         <ul className="space-y-3">
                           <li className="flex">
                          <span className="mr-1">
@@ -43,108 +44,31 @@ const ServiceDetails = () => {
                         </span>
                         A slice of heaven
                         </li>
-                        <li className="flex">
-                        <span className="mr-1">
-                            <svg
-                            className="w-5 h-5 mt-px text-deep-purple-accent-400"
-                            stroke="currentColor"
-                            viewBox="0 0 52 52"
-                            >
-                            <polygon
-                                strokeWidth="4"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                fill="none"
-                                points="29 13 14 29 25 29 23 39 38 23 27 23"
-                            />
-                            </svg>
-                        </span>
-                        Disrupt inspire
-                        </li>
-                        <li className="flex">
-                        <span className="mr-1">
-                            <svg
-                            className="w-5 h-5 mt-px text-deep-purple-accent-400"
-                            stroke="currentColor"
-                            viewBox="0 0 52 52"
-                            >
-                            <polygon
-                                strokeWidth="4"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                fill="none"
-                                points="29 13 14 29 25 29 23 39 38 23 27 23"
-                            />
-                            </svg>
-                        </span>
-                        Preliminary thinking
-                        </li>
                     </ul>
-                    <ul className="space-y-3">
-                        <li className="flex">
-                        <span className="mr-1">
-                            <svg
-                            className="w-5 h-5 mt-px text-deep-purple-accent-400"
-                            stroke="currentColor"
-                            viewBox="0 0 52 52"
-                            >
-                            <polygon
-                                strokeWidth="4"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                fill="none"
-                                points="29 13 14 29 25 29 23 39 38 23 27 23"
-                            />
-                            </svg>
-                        </span>
-                        Flipboard curmudgeon
-                        </li>
-                        <li className="flex">
-                        <span className="mr-1">
-                            <svg
-                            className="w-5 h-5 mt-px text-deep-purple-accent-400"
-                            stroke="currentColor"
-                            viewBox="0 0 52 52"
-                            >
-                            <polygon
-                                strokeWidth="4"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                fill="none"
-                                points="29 13 14 29 25 29 23 39 38 23 27 23"
-                            />
-                            </svg>
-                        </span>
-                        Storage shed
-                        </li>
-                        <li className="flex">
-                        <span className="mr-1">
-                            <svg
-                            className="w-5 h-5 mt-px text-deep-purple-accent-400"
-                            stroke="currentColor"
-                            viewBox="0 0 52 52"
-                            >
-                            <polygon
-                                strokeWidth="4"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                fill="none"
-                                points="29 13 14 29 25 29 23 39 38 23 27 23"
-                            />
-                            </svg>
-                        </span>
-                        Satoshi Nakamoto
-                        </li>
-                    </ul>
-                    </div>
+                    </div> */}
                 </div>
             <div>
                 <img
                 className="object-cover w-full h-56 rounded shadow-lg sm:h-96"
-                src="https://images.pexels.com/photos/927022/pexels-photo-927022.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260"
+                src={img}
                 alt=""
                 />
             </div>
+            </div>
+            <div className='mt-12'>
+                <p className="mb-4 text-2xl font-bold tracking-widest uppercase">
+                    REVIEWS
+                </p>
+                <div className=''>
+                <Link to={`/add_reviews/${_id}`}>
+                    <button
+                    type='submit'
+                    className='inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-blue-400 hover:bg-blue-700 focus:shadow-outline focus:outline-none'
+                    >
+                    ADD REVIEW
+                    </button>
+                </Link>
+                </div>
             </div>
         </div>
         </div>
