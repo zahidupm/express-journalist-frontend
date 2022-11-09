@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../contexts/auth.context';
 
 const ServiceDetails = () => {
     const services = useLoaderData();
+    const {user} = useContext(AuthContext);
     console.log(services);
     const {title, sub_title, img, description, price, _id} = services;
     return (
@@ -74,6 +76,12 @@ const ServiceDetails = () => {
                     ADD REVIEW
                     </button>
                 </Link>
+                </div>
+                <div className='text-red-500 font-semibold text-2xl mt-12'>
+                    {
+                        user?.uid ?
+                        '' : 'Please login to add a review'
+                    }
                 </div>
             </div>
         </div>
