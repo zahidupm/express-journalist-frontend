@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import AddReview from "../components/AddReview";
 import AddService from "../components/AddService";
 import Login from "../components/Auth/Login";
 import Register from "../components/Auth/Register";
@@ -36,6 +37,13 @@ const routes = createBrowserRouter([
             {
                 path: '/service/:id',
                 element: <ServiceDetails></ServiceDetails>,
+                loader: ({params}) => {
+                    return fetch(`http://localhost:5000/service/${params.id}`)
+                }
+            },
+            {
+                path: '/add_review/:id',
+                element: <PrivateRoute><AddReview></AddReview></PrivateRoute>,
                 loader: ({params}) => {
                     return fetch(`http://localhost:5000/service/${params.id}`)
                 }
