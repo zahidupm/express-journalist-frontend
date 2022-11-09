@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ServiceItem = ({service}) => {
-    const {title, sub_title, img, price, description, ratings} = service;
+    const {title, sub_title, img, price, description, _id} = service;
     return (
         <div>
             <div className="flex flex-col lg:flex-row px-4 pt-4 pb-32 mx-auto">
@@ -28,9 +28,8 @@ const ServiceItem = ({service}) => {
                     <p className="mb-6 text-gray-900">
                         {description.slice(0, 100) + ' ...'}
                     </p>
-                    {/* <p className='mb-5 text-blue-400'>Rating: {ratings}</p> */}
                     <div className='flex items-center'>
-                        <Link to=''>
+                        <Link to={`../service/${_id}`}>
                             <button
                             type='submit'
                             className='inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-blue-400 hover:bg-blue-700 focus:shadow-outline focus:outline-none'
@@ -42,7 +41,6 @@ const ServiceItem = ({service}) => {
                             Price: {price}
                         </p>
                         </div>
-                    {/* <hr className="mb-5 border-gray-300" /> */}
                     </div>
                     <div className=''>
                     <img
@@ -52,9 +50,7 @@ const ServiceItem = ({service}) => {
                     />
                     </div>
                 </div>
-
-
-                        {/* ========= */}
+                        {/*========*/}
              </div>
         </div>
         <hr className="mb-5 border-b-4 border-black" />
