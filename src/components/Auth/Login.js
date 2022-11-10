@@ -62,8 +62,28 @@ const Login = () => {
         .then(result => {
           const user = result.user;
           console.log(user);
-          navigate(location?.state?.from?.pathname || '/');
-          swal({ title: "Sign In successfully!",icon: "success", });
+          
+          const currentUser = {
+            email: user.email
+          }
+          console.log(currentUser);
+
+          // get jwt token
+          fetch(`https://service-review-assignment-11-server-side.vercel.app/jwt`, {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json'
+            },
+            body: JSON.stringify(currentUser)
+          })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data);
+            localStorage.setItem('journalistToken', data.token);
+            navigate(location?.state?.from?.pathname || '/');
+            swal({ title: "Sign In successfully!",icon: "success", });
+          })
+
         })
         .catch(error => {
           console.error(error)

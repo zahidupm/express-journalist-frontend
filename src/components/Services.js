@@ -4,11 +4,26 @@ import ServiceItem from './ServiceItem';
 const Services = () => {
     const [services, setServices] = useState([]);
     
+    // useEffect( () =>{
+    //     fetch('https://service-review-assignment-11-server-side.vercel.app/services')
+    //     .then(res =>res.json())
+    //     .then(data => setServices(data))
+    // }, []);
+
+    const [loading, setLoading] = useState(true)
+    
     useEffect( () =>{
-        fetch('http://localhost:5000/services')
+        fetch('https://service-review-assignment-11-server-side.vercel.app/services')
         .then(res =>res.json())
-        .then(data => setServices(data))
+        .then(data => {
+            setServices(data)
+            setLoading(false)
+        })
     }, []);
+
+            {loading && <div className='flex items-center justify-center min-h-screen'>
+            <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
+        </div>}
 
     return (
         <div>

@@ -20,11 +20,29 @@ const routes = createBrowserRouter([
         element: <Main></Main>,
         errorElement: <ErrorPage></ErrorPage>,
         children: [
-            { path: '/', element: <Home></Home> },
-            { path: '/home', element: <Home></Home> },
+            { 
+                path: '/', 
+                element: <Home></Home> ,
+                loader: () => {
+                    return fetch(`https://service-review-assignment-11-server-side.vercel.app/services`)
+                }
+            },
+            { 
+                path: '/home', 
+                element: <Home></Home> ,
+                loader: () => {
+                    return fetch(`https://service-review-assignment-11-server-side.vercel.app/services`)
+                }
+            },
             { path: '/login', element: <Login></Login> },
             { path: '/register', element: <Register></Register> },
-            { path: '/services', element: <Services></Services> },
+            { 
+                path: '/services', 
+                element: <Services></Services>,
+                loader: () => {
+                    return fetch(`https://service-review-assignment-11-server-side.vercel.app/services`)
+                }
+            },
             { path: '/blog', element: <Blog></Blog> },
             { path: '/faq', element: <Faq></Faq> },
             { 
@@ -39,14 +57,14 @@ const routes = createBrowserRouter([
                 path: '/service/:id',
                 element: <ServiceDetails></ServiceDetails>,
                 loader: ({params}) => {
-                    return fetch(`http://localhost:5000/service/${params.id}`)
+                    return fetch(`https://service-review-assignment-11-server-side.vercel.app/service/${params.id}`)
                 }
             },
             {
                 path: '/add_review/:id',
                 element: <PrivateRoute><AddReview></AddReview></PrivateRoute>,
                 loader: ({params}) => {
-                    return fetch(`http://localhost:5000/service/${params.id}`)
+                    return fetch(`https://service-review-assignment-11-server-side.vercel.app/service/${params.id}`)
                 }
             },
             {

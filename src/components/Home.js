@@ -7,11 +7,26 @@ import Sports from './Shared/Sports';
 const Home = () => {
     const [services, setServices] = useState([]);
     
+    // useEffect( () =>{
+    //     fetch('https://service-review-assignment-11-server-side.vercel.app/services')
+    //     .then(res =>res.json())
+    //     .then(data => setServices(data))
+    // }, []);
+
+    const [loading, setLoading] = useState(true)
+    
     useEffect( () =>{
-        fetch('http://localhost:5000/services')
+        fetch('https://service-review-assignment-11-server-side.vercel.app/services')
         .then(res =>res.json())
-        .then(data => setServices(data))
+        .then(data => {
+            setServices(data)
+            setLoading(false)
+        })
     }, []);
+
+            { loading && <div className='flex items-center justify-center min-h-screen'>
+            <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
+        </div> }
 
     return (
         <div>
@@ -25,7 +40,9 @@ const Home = () => {
                         can imagine{' '}
                         <span className="inline-block text-deep-purple-accent-400">is real</span>
                         </h2>
-                        <p className="text-gray-700 text-base md:text-lg">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae. explicabo.</p>
+                        <p className="text-gray-700 text-base md:text-lg">
+                            I am a Journalist . I am working from hiring. If you want to hiring me, please contact with me.
+                        </p>
                     </div>
                     <div className="flex items-center space-x-3">
                         <a href="/" className="w-32 transition duration-300 hover:shadow-lg">
