@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import useTitle from '../hooks/useTitle';
 import ServiceItem from './ServiceItem';
 
 const Services = () => {
     const [services, setServices] = useState([]);
+    useTitle('Services');
     
     // useEffect( () =>{
     //     fetch('https://service-review-assignment-11-server-side.vercel.app/services')

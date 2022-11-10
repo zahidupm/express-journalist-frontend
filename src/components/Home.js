@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useTitle from '../hooks/useTitle';
 import ServiceItem from './ServiceItem';
 import Photos from './Shared/Photos';
 import Sports from './Shared/Sports';
 
 const Home = () => {
     const [services, setServices] = useState([]);
+    useTitle('Home')
     
     // useEffect( () =>{
     //     fetch('https://service-review-assignment-11-server-side.vercel.app/services')

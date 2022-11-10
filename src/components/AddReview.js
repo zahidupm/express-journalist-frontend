@@ -3,10 +3,12 @@ import { useLoaderData } from 'react-router-dom';
 import swal from 'sweetalert';
 import '../components/Auth/Auth.css';
 import { AuthContext } from '../contexts/auth.context';
+import useTitle from '../hooks/useTitle';
 
 const AddReview = () => {
     const {user} = useContext(AuthContext);
     const {title, _id} = useLoaderData();
+    useTitle('Add Review')
 
     const handleSubmit = (e) => {
         e.preventDefault();

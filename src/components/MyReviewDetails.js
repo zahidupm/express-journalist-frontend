@@ -1,7 +1,9 @@
 import React from 'react';
+import useTitle from '../hooks/useTitle';
 
 const MyReviewDetails = ({review, handleDelete, handleEdit}) => {
     const {serviceName, photoURL, name, desc, _id} = review;
+    useTitle('My Review Details')
 
     return (
         <div>

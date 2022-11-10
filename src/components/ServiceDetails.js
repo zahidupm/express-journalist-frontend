@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../contexts/auth.context';
+import useTitle from '../hooks/useTitle';
 import MyReviews from './MyReviews';
 
 const ServiceDetails = () => {
@@ -9,6 +10,7 @@ const ServiceDetails = () => {
     const {user} = useContext(AuthContext);
     console.log(services);
     const {title, sub_title, img, description, price, _id} = services;
+    useTitle('Service Details')
     return (
         <div>
             <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">

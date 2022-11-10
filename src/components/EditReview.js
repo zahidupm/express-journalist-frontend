@@ -1,11 +1,14 @@
 import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { AuthContext } from '../contexts/auth.context';
+import useTitle from '../hooks/useTitle';
 
 const EditReview = () => {
     const {user} = useContext(AuthContext)
     const router = useParams;
     const {title, _id, desc} = router
+
+    useTitle('Edit Review')
 
     const handleSubmit = (e) => {
         e.preventDefault();

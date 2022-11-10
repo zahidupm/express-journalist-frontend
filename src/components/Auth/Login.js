@@ -2,12 +2,14 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import { AuthContext } from '../../contexts/auth.context';
+import useTitle from '../../hooks/useTitle';
 import './Auth.css';
 
 const Login = () => {
     const {signIn, signInWithGoogle, signInWithGithub} = useContext(AuthContext)
     const navigate = useNavigate();
     const location = useLocation();
+    useTitle('Sign In')
 
     const [userInfo, setUserInfo]= useState({
         email: "",

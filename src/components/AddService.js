@@ -1,8 +1,10 @@
 import React from 'react';
 import swal from 'sweetalert';
 import '../components/Auth/Auth.css';
+import useTitle from '../hooks/useTitle';
 
 const AddService = () => {
+    useTitle('Add Services')
 
     const handleSubmit = (e) => {
         e.preventDefault();

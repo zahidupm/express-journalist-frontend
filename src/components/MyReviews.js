@@ -2,12 +2,14 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import { AuthContext } from '../contexts/auth.context';
+import useTitle from '../hooks/useTitle';
 import MyReviewDetails from './MyReviewDetails';
 
 const MyReviews = () => {
     const {user, logOut} = useContext(AuthContext);
     const [reviews, setReviews] = useState([])
     const navigate = useNavigate();
+    useTitle('My Review')
 
     useEffect(() => {
         fetch(`https://service-review-assignment-11-server-side.vercel.app/reviews?email=${user?.email}`, {
