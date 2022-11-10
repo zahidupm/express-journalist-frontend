@@ -8,24 +8,26 @@ import Sports from './Shared/Sports';
 const Home = () => {
     const [services, setServices] = useState([]);
     useTitle('Home')
-    
-    // useEffect( () =>{
-    //     fetch('https://service-review-assignment-11-server-side.vercel.app/services')
-    //     .then(res =>res.json())
-    //     .then(data => setServices(data))
-    // }, []);
-
+    // const {count} = useLoaderData();
     const [loading, setLoading] = useState(true)
+    const [page, setPage] = useState(0);
+    const [size, setSize] = useState(3);
+    const [count, setCount] = useState(0)
+
+    
     
     useEffect( () =>{
-        fetch('https://service-review-assignment-11-server-side.vercel.app/services')
+        fetch(`https://service-review-assignment-11-server-side.vercel.app/services?page=${page}&size=${size}`)
         .then(res =>res.json())
         .then(data => {
-            setServices(data)
+            setCount(data.count);
+            setServices(data.services);
             setLoading(false)
         })
-    }, []);
-
+    }, [page, size]);
+    
+    const pages = Math.ceil(count / size);
+    
             { loading && <div className='flex items-center justify-center min-h-screen'>
             <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
         </div> }
@@ -77,11 +79,28 @@ const Home = () => {
                 <div className="bg-[#F4E6D9] py-16 mx-auto sm:max-w-xl-fluid md:max-w-full-fluid lg:max-w-screen-xl-fluid lg:py-20">
                     <div className="mb-10 px-12 border-t-4 border-t-black divide-y">
                         {
-                            services.map(service => <ServiceItem 
+                            services?.map(service => <ServiceItem 
                             key={service._id}
                             service={service}
                             ></ServiceItem>)
                         }
+                    </div>
+                    <div className="pagination mr-4 text-center">
+                        <p className='mb-4'>Current Page: {page} and Size : {size}</p>
+                        {
+                            [...Array(pages).keys()].map(number => <button className={page === number && 'selected'} 
+                                key={number}
+                                onClick={() => setPage(number)}
+                                >
+                                    {number + 1}
+                                </button>)
+                        }
+                        <select onChange={e => setSize(e.target.value)}>
+                            <option value="3" selected>3</option>
+                            <option value="6">6</option>
+                            <option value="12">3</option>
+                            <option value="24">24</option>
+                        </select>
                     </div>
                 <div className="text-center">
                 <Link to={`/services`}>

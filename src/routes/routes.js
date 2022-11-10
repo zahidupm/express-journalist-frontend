@@ -29,7 +29,7 @@ const routes = createBrowserRouter([
             },
             { 
                 path: '/home', 
-                element: <Home></Home> ,
+                element: <Home></Home>,
                 loader: () => {
                     return fetch(`https://service-review-assignment-11-server-side.vercel.app/services`)
                 }

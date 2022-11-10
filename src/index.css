@@ -13,12 +13,14 @@
 .user-img {
   width: 40px;
 }
-
-
-
-
-
-
+.pagination .selected {
+  background-color: orangered;
+  border: orange;
+  padding: 16px;
+}
+.pagination button {
+  @apply text-center mb-4 mx-4 py-4 text-center bg-blue-500 px-4 py-4 text-white;
+}
 
 body {
   margin: 0;
