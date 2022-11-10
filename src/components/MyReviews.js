@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import { AuthContext } from '../contexts/auth.context';
 import MyReviewDetails from './MyReviewDetails';
@@ -6,6 +7,7 @@ import MyReviewDetails from './MyReviewDetails';
 const MyReviews = () => {
     const {user} = useContext(AuthContext);
     const [reviews, setReviews] = useState([])
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch(`http://localhost:5000/reviews?email=${user?.email}`)
@@ -31,6 +33,10 @@ const MyReviews = () => {
         }
     }
 
+    const handleEdit = (id) => {
+        navigate(`/edit_review/${id}`)
+    }
+
     return (
         <div>
              <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
@@ -39,6 +45,7 @@ const MyReviews = () => {
                         reviews.map(review => <MyReviewDetails
                             key={review._id} review={review}
                             handleDelete={handleDelete}
+                            handleEdit={handleEdit}
                             ></MyReviewDetails>)
                     }
                 </div>

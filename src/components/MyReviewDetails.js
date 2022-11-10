@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MyReviewDetails = ({review, handleDelete}) => {
+const MyReviewDetails = ({review, handleDelete, handleEdit}) => {
     const {serviceName, photoURL, name, desc, _id} = review;
 
     return (
@@ -57,7 +57,7 @@ const MyReviewDetails = ({review, handleDelete}) => {
                     >
                     DELETE
                     </button>
-                    <button
+                    <button onClick={() => handleEdit(_id)}
                     type='submit'
                     className='inline-flex items-center justify-center h-10 mt-4 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-blue-400 hover:bg-blue-700 focus:shadow-outline focus:outline-none'
                     >

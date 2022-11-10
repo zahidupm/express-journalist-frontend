@@ -1,12 +1,11 @@
 import React, { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
-import swal from 'sweetalert';
-import '../components/Auth/Auth.css';
+import { useParams } from 'react-router-dom';
 import { AuthContext } from '../contexts/auth.context';
 
-const AddReview = () => {
-    const {user} = useContext(AuthContext);
-    const {title, _id} = useLoaderData();
+const EditReview = () => {
+    const {user} = useContext(AuthContext)
+    const router = useParams;
+    const {title, _id, desc} = router
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -21,29 +20,11 @@ const AddReview = () => {
         }
         console.log(review);
 
-        fetch(`http://localhost:5000/reviews`, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(review)
-        })
-        .then(res => res.json())
-        .then(data => {
-            if(data.success) {
-                swal({ title: data.success, icon: "success", });
-                e.target.reset();
-            } else {
-                swal({ title: data.error, icon: "error", });
-            }
-        })
-        .catch(err => {
-            swal({ title: err.message, icon: "error", });
-        })
     }
 
     return (
         <div>
+            <div>
             <div className='text-4xl mt-12 text-center font-bold text-orange-500'>
                 {title}
             </div>
@@ -55,7 +36,7 @@ const AddReview = () => {
 
                 <div className="right-section ">
                     <div className="heading">
-                        <h4>Add Review</h4>
+                        <h4>Edit Review</h4>
                     </div>
 
                     <div className="flex space-x-4">
@@ -89,12 +70,12 @@ const AddReview = () => {
                         <div className="pm-form-group">
                             <label htmlFor="desc" className="pm-form-label">Review Text</label>
                             {/* <input type="text" className="pm-form-control focus:border-orange-400" id="price" name="price" autoFocus="" autoComplete="off" autoCapitalize="none" spellCheck="true" required /> */}
-                            <textarea  rows="3" id="desc" name="desc" placeholder="Message..." className="w-full border border-orange-400 mt-4 p-4 rounded-md resize-none text-gray-900" required></textarea>
+                            <textarea defaultValue={desc}  rows="3" id="desc" name="desc" placeholder="Message..." className="w-full border border-orange-400 mt-4 p-4 rounded-md resize-none text-gray-900" required></textarea>
                         </div>
 
                         <div className="pm-form-group">
                             <button type="submit" className="bg-orange-500 text-white pmt_sign-up-btn pm-btn pm-btn-primary sign-up-btn g-recaptcha" id="sign-up-btn">
-                            Add Review
+                            Edit Review
                             </button>
                         </div>
                     </form>
@@ -102,7 +83,8 @@ const AddReview = () => {
                 </div>
                 </div>
         </div>
+        </div>
     );
 };
 
-export default AddReview;
+export default EditReview;

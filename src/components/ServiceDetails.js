@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../contexts/auth.context';
+import MyReviews from './MyReviews';
 
 const ServiceDetails = () => {
     const services = useLoaderData();
@@ -82,6 +83,9 @@ const ServiceDetails = () => {
                         user?.uid ?
                         '' : 'Please login to add a review'
                     }
+                </div>
+                <div className='mt-12'>
+                    <MyReviews></MyReviews>
                 </div>
             </div>
         </div>

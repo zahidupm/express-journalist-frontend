@@ -4,6 +4,7 @@ import AddService from "../components/AddService";
 import Login from "../components/Auth/Login";
 import Register from "../components/Auth/Register";
 import Blog from "../components/Blog";
+import EditReview from "../components/EditReview";
 import ErrorPage from "../components/ErrorPage";
 import Faq from "../components/Faq";
 import Home from "../components/Home";
@@ -47,6 +48,10 @@ const routes = createBrowserRouter([
                 loader: ({params}) => {
                     return fetch(`http://localhost:5000/service/${params.id}`)
                 }
+            },
+            {
+                path: '/edit_review/:id',
+                element: <EditReview></EditReview>,
             }
         ]
     }
